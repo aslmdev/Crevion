@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0a0a14;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .error-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .error-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.15), transparent 70%);
+            animation: moveGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes moveGlow {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(100px, 50px); }
+        }
+
+        .error-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .error-icon {
+            font-size: 8rem;
+            margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .error-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .error-username {
+            background: linear-gradient(135deg, #7C3AED, #C026D3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .error-message {
+            font-size: 1.25rem;
+            color: #B8B8D0;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .error-btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #370080, #7C3AED);
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 20px rgba(55, 0, 128, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(55, 0, 128, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <%- include("header", { user: user }) %>
+
+    <div class="error-page">
+        <div class="error-bg">
+            <div class="error-glow"></div>
+        </div>
+
+        <div class="error-content">
+            <div class="error-icon">🔍</div>
+            <h1 class="error-title">
+                المستخدم <span class="error-username">@<%= username %></span> غير موجود
+            </h1>
+            <p class="error-message">
+                لم نتمكن من العثور على هذا المستخدم. قد يكون الحساب محذوفاً أو أن اسم المستخدم غير صحيح.
+            </p>
+
+            <div class="error-actions">
+                <a href="/" class="error-btn btn-primary">
+                    <span>العودة للرئيسية</span>
+                </a>
+                <a href="/explore" class="error-btn btn-secondary">
+                    <span>استكشاف المبدعين</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

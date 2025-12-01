@@ -1,0 +1,1999 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <%- include("loader") %>
+    <%- include("header", { user: user }) %>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor-glow"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="grid-bg"></div>
+        <div class="gradient-overlay"></div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge" data-aos="fade-up">
+                    <span class="badge-pulse"></span>
+                    <span>المجتمع الاول عربيا في الابداع !</span>
+                </div>
+                
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+                    ابدأ رحلتك
+                    <span class="gradient-text">الإبداعية</span>
+                    مع كريڤيون
+                </h1>
+                
+                <p class="hero-desc" data-aos="fade-up" data-aos-delay="200">
+                    انضم لمجتمع المبدعين والمطورين في مكان واحد. بناء، مشاركة، ونمو معاً.
+                </p>
+                
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+                    <% if (user) { %>
+                        <a href="/dashboard" class="btn-primary">
+                            <span>لوحة التحكم</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                    <% } else { %>
+                        <a href="https://discord.com/api/oauth2/authorize?client_id=1416879488855445536&redirect_uri=http%3A%2F%2Flocalhost%3A4000%2Fauth%2Fdiscord&response_type=code&scope=identify%20email" class="btn-primary">
+                            <span>ابدأ الآن مجاناً</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                    <% } %>
+                    <a href="#features" class="btn-secondary">
+                        <span>اكتشف المميزات</span>
+                    </a>
+                </div>
+                
+                <div class="stats-row" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat">
+                        <div class="stat-number">+10K</div>
+                        <div class="stat-label">مبدع نشط</div>
+                    </div>
+                    <div class="stat-line"></div>
+                    <div class="stat">
+                        <div class="stat-number">+25K</div>
+                        <div class="stat-label">مشروع منجز</div>
+                    </div>
+                    <div class="stat-line"></div>
+                    <div class="stat">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">رضا المستخدمين</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Dashboard Prototype Section - احترافي -->
+    <section class="dashboard-prototype-section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">
+            تجربة تفاعلية للمنصة
+        </h2>
+        <p class="section-desc" data-aos="fade-up" data-aos-delay="100">
+            استكشف كيف ستبدو صفحتك وكيف ستتفاعل مع المجتمع
+        </p>
+        
+        <div class="prototype-wrapper" data-aos="zoom-in" data-aos-delay="200">
+            <!-- Browser Window -->
+            <div class="browser-window">
+                <div class="browser-header">
+                    <div class="browser-controls">
+                        <span class="control-dot red"></span>
+                        <span class="control-dot yellow"></span>
+                        <span class="control-dot green"></span>
+                    </div>
+                    <div class="browser-address">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 12H22M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span>crevion.qzz.io/@username</span>
+                    </div>
+                </div>
+                
+                <!-- Dashboard UI -->
+                <div class="dashboard-ui">
+                    <!-- Profile Header -->
+                    <div class="profile-header-demo">
+                        <div class="profile-cover"><img src="/assets/images/Crevion_Main_banner.png" alt="Cover" ></div>
+                        <div class="profile-info-demo">
+                            <div class="profile-avatar-demo">
+                                <img src="/assets/images/Crevion_Main_Logo.png" alt="Avatar">
+                                <div class="avatar-badge">PRO</div>
+                            </div>
+                            <div class="profile-details-demo">
+                                <h3>Crevion Team's Leader</h3>
+                                <p>Full Stack Developer & UI Designer</p>
+                                <div class="profile-stats-demo">
+                                    <div class="stat-demo">
+                                        <strong>24</strong>
+                                        <span>مشروع</span>
+                                    </div>
+                                    <div class="stat-demo">
+                                        <strong>1.2K</strong>
+                                        <span>متابع</span>
+                                    </div>
+                                    <div class="stat-demo">
+                                        <strong>3.4K</strong>
+                                        <span>إعجاب</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="follow-btn-demo">متابعة +</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Tabs -->
+                    <div class="tabs-demo">
+                        <button class="tab-demo active" onclick="switchDemoTab('projects')">المشاريع</button>
+                        <button class="tab-demo" onclick="switchDemoTab('about')">نبذة عني</button>
+                        <button class="tab-demo" onclick="switchDemoTab('reviews')">التقييمات</button>
+                    </div>
+                    
+                    <!-- Tab Content -->
+                    <div class="tab-content-demo active" id="projects-demo">
+                        <div class="projects-grid-demo">
+                            <div class="project-card-demo">
+                                <div class="project-image-demo purple-gradient">
+                                    <div class="project-overlay">
+                                        <button class="view-btn">عرض المشروع</button>
+                                    </div>
+                                </div>
+                                <div class="project-info-demo">
+                                    <h4>تطبيق إدارة المهام</h4>
+                                    <p>React & Node.js</p>
+                                    <div class="project-stats-demo">
+                                        <span>❤️ 234</span>
+                                        <span>💬 45</span>
+                                        <span>👁️ 1.2K</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card-demo">
+                                <div class="project-image-demo blue-gradient">
+                                    <div class="project-overlay">
+                                        <button class="view-btn">عرض المشروع</button>
+                                    </div>
+                                </div>
+                                <div class="project-info-demo">
+                                    <h4>موقع تجارة إلكترونية</h4>
+                                    <p>Vue.js & Laravel</p>
+                                    <div class="project-stats-demo">
+                                        <span>❤️ 189</span>
+                                        <span>💬 32</span>
+                                        <span>👁️ 980</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card-demo">
+                                <div class="project-image-demo green-gradient">
+                                    <div class="project-overlay">
+                                        <button class="view-btn">عرض المشروع</button>
+                                    </div>
+                                </div>
+                                <div class="project-info-demo">
+                                    <h4>لوحة تحكم تحليلية</h4>
+                                    <p>Next.js & Firebase</p>
+                                    <div class="project-stats-demo">
+                                        <span>❤️ 456</span>
+                                        <span>💬 67</span>
+                                        <span>👁️ 2.1K</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content-demo" id="about-demo">
+                        <div class="about-content-demo">
+                            <h4>عن المطور</h4>
+                            <p>مطور Full Stack بخبرة 5 سنوات في بناء تطبيقات ويب حديثة. متخصص في React و Node.js مع شغف بتصميم واجهات المستخدم الجميلة.</p>
+                            
+                            <div class="skills-demo">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">TypeScript</span>
+                                <span class="skill-tag">UI/UX</span>
+                                <span class="skill-tag">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content-demo" id="reviews-demo">
+                        <div class="reviews-list-demo">
+                            <div class="review-item-demo">
+                                <img src="https://ui-avatars.com/api/?name=Sara+Ali&background=370080&color=fff" alt="Sara">
+                                <div class="review-content-demo">
+                                    <div class="review-header-demo">
+                                        <strong>سارة علي</strong>
+                                        <span class="rating">⭐⭐⭐⭐⭐</span>
+                                    </div>
+                                    <p>مطور محترف جداً، التسليم في الوقت المحدد والجودة ممتازة!</p>
+                                </div>
+                            </div>
+                            <div class="review-item-demo">
+                                <img src="https://ui-avatars.com/api/?name=Omar+Hassan&background=7C3AED&color=fff" alt="Omar">
+                                <div class="review-content-demo">
+                                    <div class="review-header-demo">
+                                        <strong>عمر حسن</strong>
+                                        <span class="rating">⭐⭐⭐⭐⭐</span>
+                                    </div>
+                                    <p>تعامل راقي وعمل احترافي. أنصح بالتعامل معه بشدة!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Profile Preview Section -->
+    <section class="profile-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                بروفايل احترافي لكل مبدع
+            </h2>
+            <p class="section-desc" data-aos="fade-up" data-aos-delay="100">
+                اعرض مهاراتك، مشاريعك، وإنجازاتك في صفحة واحدة أنيقة
+            </p>
+            
+            <div class="profile-preview" data-aos="zoom-in" data-aos-delay="200">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <div class="avatar-ring"></div>
+                            <img src="/assets/images/Crevion_Main_Logo.png" alt="Avatar">
+                            <div class="pro-badge">PRO</div>
+                        </div>
+                        <h3 class="profile-name">Crevion Team's Leader</h3>
+                        <p class="profile-role">Full Stack Developer & Content Creator</p>
+                    </div>
+                    
+                    <div class="profile-badges">
+                        <div class="badge-item gold">🏆</div>
+                        <div class="badge-item silver">🥈</div>
+                        <div class="badge-item bronze">🥉</div>
+                    </div>
+                    
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <div class="stat-val">24</div>
+                            <div class="stat-lbl">مشاريع</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="stat-val">1.2K</div>
+                            <div class="stat-lbl">متابع</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="stat-val">456</div>
+                            <div class="stat-lbl">إعجاب</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                ليه المبدعون يختارونا؟
+            </h2>
+            <p class="section-desc" data-aos="fade-up" data-aos-delay="100">
+                مميزات فريدة تجعلنا الخيار الأول للمبدعين
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon purple">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>أداء استثنائي</h3>
+                    <p>منصة سريعة ومستقرة مع وقت تشغيل 99.9%</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon blue">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                            <path d="M17 8L21 12M21 12L17 16M21 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>سهولة الاستخدام</h3>
+                    <p>واجهة بسيطة وسهلة للجميع بدون تعقيدات</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon green">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L4 6V12C4 16.5 7 20.5 12 22C17 20.5 20 16.5 20 12V6L12 2Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>أمان متقدم</h3>
+                    <p>حماية كاملة لبياناتك ومشاريعك الإبداعية</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon pink">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                            <path d="M17 20H22V18C22 16.3431 20.6569 15 19 15C18.0444 15 17.1931 15.4468 16.6438 16.1429M17 20H7M17 20V18C17 17.3438 16.8736 16.717 16.6438 16.1429M7 20H2V18C2 16.3431 3.34315 15 5 15C5.95561 15 6.80686 15.4468 7.35625 16.1429M7 20V18C7 17.3438 7.12642 16.717 7.35625 16.1429M7.35625 16.1429C8.0935 14.301 9.89482 13 12 13C14.1052 13 15.9065 14.301 16.6438 16.1429M15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7ZM21 10C21 11.1046 20.1046 12 19 12C17.8954 12 17 11.1046 17 10C17 8.89543 17.8954 8 19 8C20.1046 8 21 8.89543 21 10ZM7 10C7 11.1046 6.10457 12 5 12C3.89543 12 3 11.1046 3 10C3 8.89543 3.89543 8 5 8C6.10457 8 7 8.89543 7 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>مجتمع نشط</h3>
+                    <p>تواصل مع آلاف المبدعين واستفد من خبراتهم</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with Server Identity -->
+<section class="about-section">
+    <div class="container">
+        <div class="about-grid">
+            <!-- Text Content -->
+            <div class="about-text" data-aos="fade-right">
+                <div class="section-label">
+                    <span class="label-dot"></span>
+                    <span>من نحن</span>
+                </div>
+                <h2 class="about-title">
+                    مجتمع يجمع المبدعين 
+                    <span class="text-gradient">في مكان واحد</span>
+                </h2>
+                <p class="about-paragraph">
+                    كريڤيون ليست مجرد منصة، بل هي مجتمع حيوي يضم آلاف المبدعين العرب من مختلف المجالات. 
+                    نوفر لك مساحة لعرض مشاريعك، الحصول على تقييمات بناءة، والتواصل مع محترفين في مجالك.
+                </p>
+                <p class="about-paragraph">
+                    من خلال سيرفر Discord الخاص بنا، يمكنك التفاعل المباشر مع المجتمع، المشاركة في التحديات، 
+                    وبناء علاقات مهنية قوية تساعدك على النمو والتطور.
+                </p>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-number">10K+</div>
+                        <div class="feature-label">مبدع نشط</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">50K+</div>
+                        <div class="feature-label">مشروع مشارك</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-number">24/7</div>
+                        <div class="feature-label">دعم مستمر</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Server Identity -->
+            <div class="server-identity" data-aos="fade-left">
+                <div class="server-banner">
+                    <img src="/path-to-banner.jpg" alt="Crevion Server" class="banner-img">
+                    <div class="banner-overlay">
+                        <div class="laptop-illustration">
+                            <svg viewBox="0 0 400 300" class="laptop-svg">
+                                <defs>
+                                    <linearGradient id="laptop-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#7C3AED"/>
+                                        <stop offset="100%" style="stop-color:#C026D3"/>
+                                    </linearGradient>
+                                    <filter id="glow">
+                                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                                        <feMerge>
+                                            <feMergeNode in="coloredBlur"/>
+                                            <feMergeNode in="SourceGraphic"/>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                
+                                <!-- Laptop Base -->
+                                <rect x="50" y="200" width="300" height="8" fill="url(#laptop-gradient)" opacity="0.6" rx="4"/>
+                                
+                                <!-- Laptop Screen -->
+                                <rect x="80" y="80" width="240" height="120" fill="#0a0a14" stroke="url(#laptop-gradient)" stroke-width="3" rx="8"/>
+                                
+                                <!-- Screen Content -->
+                                <rect x="90" y="90" width="220" height="100" fill="#050816" rx="4"/>
+                                
+                                <!-- Feather -->
+                                <path d="M200 110 Q210 140 200 170 Q190 140 200 110" fill="url(#laptop-gradient)" filter="url(#glow)" class="feather">
+                                    <animateTransform
+                                        attributeName="transform"
+                                        type="rotate"
+                                        from="0 200 140"
+                                        to="360 200 140"
+                                        dur="20s"
+                                        repeatCount="indefinite"/>
+                                </path>
+                                <path d="M195 120 Q185 135 190 145" stroke="url(#laptop-gradient)" stroke-width="2" fill="none" opacity="0.8"/>
+                                <path d="M205 120 Q215 135 210 145" stroke="url(#laptop-gradient)" stroke-width="2" fill="none" opacity="0.8"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="server-info">
+                            <h3>Community</h3>
+                            <p class="server-link">Discord.gg/crevion</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="floating-cards">
+                    <div class="float-card card-1">
+                        <div class="card-icon-circle purple">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M17 20H22V18C22 16.3431 20.6569 15 19 15C18.0444 15 17.1931 15.4468 16.6438 16.1429M17 20H7M17 20V18C17 17.3438 16.8736 16.717 16.6438 16.1429M7 20H2V18C2 16.3431 3.34315 15 5 15C5.95561 15 6.80686 15.4468 7.35625 16.1429M7 20V18C7 17.3438 7.12642 16.717 7.35625 16.1429M7.35625 16.1429C8.0935 14.301 9.89482 13 12 13C14.1052 13 15.9065 14.301 16.6438 16.1429M15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="card-text">
+                            <strong>مجتمع نشط</strong>
+                            <span>تواصل مع محترفين</span>
+                        </div>
+                    </div>
+                    
+                    <div class="float-card card-2">
+                        <div class="card-icon-circle blue">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M8 10H16M8 14H16M6 20H18C18.5304 20 19.0391 19.7893 19.4142 19.4142C19.7893 19.0391 20 18.5304 20 18V6C20 5.46957 19.7893 4.96086 19.4142 4.58579C19.0391 4.21071 18.5304 4 18 4H6C5.46957 4 4.96086 4.21071 4.58579 4.58579C4.21071 4.96086 4 5.46957 4 6V18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="card-text">
+                            <strong>مشاركة المشاريع</strong>
+                            <span>اعرض أعمالك</span>
+                        </div>
+                    </div>
+                    
+                    <div class="float-card card-3">
+                        <div class="card-icon-circle green">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="card-text">
+                            <strong>تقييمات بناءة</strong>
+                            <span>طور مهاراتك</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Steps Section -->
+    <section class="steps-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                ابدأ رحلتك في 4 خطوات
+            </h2>
+            <p class="section-desc" data-aos="fade-up" data-aos-delay="100">
+                من التسجيل إلى النجاح، رحلة بسيطة وسهلة
+            </p>
+            
+            <div class="steps-timeline">
+                <div class="step" data-aos="fade-left" data-aos-delay="200">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <div class="step-icon purple">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3>سجل حساب</h3>
+                        <p>ابدأ بإنشاء حسابك عبر Discord في ثوانٍ</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-line"></div>
+                
+                <div class="step" data-aos="fade-right" data-aos-delay="300">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <div class="step-icon blue">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                                <path d="M8 10H16M8 14H16M6 20H18C18.5304 20 19.0391 19.7893 19.4142 19.4142C19.7893 19.0391 20 18.5304 20 18V6C20 5.46957 19.7893 4.96086 19.4142 4.58579C19.0391 4.21071 18.5304 4 18 4H6C5.46957 4 4.96086 4.21071 4.58579 4.58579C4.21071 4.96086 4 5.46957 4 6V18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>أكمل ملفك</h3>
+                        <p>أضف معلوماتك ومهاراتك لإظهار احترافيتك</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-line"></div>
+                
+                <div class="step" data-aos="fade-left" data-aos-delay="400">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <div class="step-icon green">
+                            <svg width="28" height="28" viewBox="0 0 71 55" fill="none">
+                                <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>انضم للمجتمع</h3>
+                        <p>ادخل سيرفر Discord وتواصل مع المبدعين</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-line"></div>
+                
+                <div class="step" data-aos="fade-right" data-aos-delay="500">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <div class="step-icon pink">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>ابدأ الإبداع</h3>
+                        <p>شارك أول مشروع واحصل على تقييمات المجتمع</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-glow"></div>
+        <div class="container">
+            <div class="cta-content" data-aos="zoom-in">
+                <h2 class="cta-title">جاهز لبدء رحلتك الإبداعية؟</h2>
+                <p class="cta-desc">انضم لآلاف المبدعين واصنع مستقبلك الرقمي معنا</p>
+                <% if (user) { %>
+                    <a href="/dashboard" class="cta-button">
+                        <span>انتقل للوحة التحكم</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+                <% } else { %>
+                    <a href="https://discord.com/api/oauth2/authorize?client_id=1416879488855445536&redirect_uri=http%3A%2F%2Flocalhost%3A4000%2Fauth%2Fdiscord&response_type=code&scope=identify%20email" class="cta-button">
+                        <span>ابدأ الآن مجاناً</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        *::selection{
+            background: #7C3AED;
+            color: #fff;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0a0a14;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Custom Cursor */
+        .cursor-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(55, 0, 128, 0.15), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s;
+            z-index: 9999;
+            mix-blend-mode: screen;
+        }
+
+        /* Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(55, 0, 128, 0.03) 1.5px, transparent 1.5px),
+                linear-gradient(90deg, rgba(55, 0, 128, 0.03) 1.5px, transparent 1.5px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .gradient-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(55, 0, 128, 0.08), transparent);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 10rem 0 6rem;
+            z-index: 2;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 1.5rem;
+            background: rgba(55, 0, 128, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 100px;
+            font-size: 0.9rem;
+            color: #C4B5FD;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-pulse {
+            width: 8px;
+            height: 8px;
+            background: #7C3AED;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.3);
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #7C3AED, #C026D3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            line-height: 1.8;
+            color: #B8B8D0;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #370080, #7C3AED);
+            color: #fff;
+            border: 1px solid rgba(124, 58, 237, 0.5);
+            box-shadow: 0 4px 24px rgba(55, 0, 128, 0.4);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: right 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            right: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 32px rgba(55, 0, 128, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .stats-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            padding: 2rem 3rem;
+            background: rgba(15, 15, 25, 0.5);
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            border-radius: 100px;
+            backdrop-filter: blur(20px);
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #7C3AED, #C026D3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #B8B8D0;
+            font-weight: 600;
+        }
+
+        .stat-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(180deg, transparent, rgba(124, 58, 237, 0.3), transparent);
+        }
+
+        /* Profile Section */
+        .profile-section {
+            padding: 8rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-desc {
+            font-size: 1.15rem;
+            color: #B8B8D0;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .profile-preview {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .profile-card {
+            background: rgba(15, 15, 25, 0.6);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 32px;
+            padding: 3rem 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 20px 60px rgba(55, 0, 128, 0.3);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-avatar {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .avatar-ring {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7C3AED, #C026D3);
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-avatar img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid #0a0a14;
+            z-index: 1;
+        }
+
+        .pro-badge {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 0.3rem 0.7rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            z-index: 2;
+        }
+
+        .profile-name {
+            font-size: 1.75rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-role {
+            font-size: 0.95rem;
+            color: #B8B8D0;
+            font-weight: 600;
+        }
+
+        .profile-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.15);
+        }
+
+        .badge-item {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .badge-item.gold {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .badge-item.silver {
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.2), rgba(169, 169, 169, 0.2));
+            border: 1px solid rgba(192, 192, 192, 0.3);
+        }
+
+        .badge-item.bronze {
+            background: linear-gradient(135deg, rgba(205, 127, 50, 0.2), rgba(184, 115, 51, 0.2));
+            border: 1px solid rgba(205, 127, 50, 0.3);
+        }
+
+        .badge-item:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .profile-stat {
+            text-align: center;
+        }
+
+        .stat-val {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #7C3AED, #C026D3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-lbl {
+            font-size: 0.85rem;
+            color: #B8B8D0;
+            font-weight: 600;
+        }
+
+        /* Why Section */
+        .why-section {
+            padding: 8rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(15, 15, 25, 0.6);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 20px 60px rgba(55, 0, 128, 0.3);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: #fff;
+        }
+
+        .feature-icon.purple {
+            background: linear-gradient(135deg, #370080, #7C3AED);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+        }
+
+        .feature-icon.blue {
+            background: linear-gradient(135deg, #0EA5E9, #06B6D4);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+        }
+
+        .feature-icon.green {
+            background: linear-gradient(135deg, #10B981, #34D399);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .feature-icon.pink {
+            background: linear-gradient(135deg, #EC4899, #F472B6);
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            color: #B8B8D0;
+            line-height: 1.7;
+        }
+
+        /* Steps Section */
+        .steps-section {
+            padding: 8rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .steps-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .step-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #7C3AED, #C026D3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+            background: rgba(15, 15, 25, 0.6);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s;
+        }
+
+        .step-content:hover {
+            transform: translateX(-10px);
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 15px 40px rgba(55, 0, 128, 0.3);
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .step-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-content p {
+            font-size: 1rem;
+            color: #B8B8D0;
+            line-height: 1.7;
+        }
+
+        .timeline-line {
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(180deg, rgba(124, 58, 237, 0.5), rgba(124, 58, 237, 0.1));
+            margin: 1rem 0 1rem 3rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.15), transparent 70%);
+            filter: blur(100px);
+        }
+
+        .cta-content {
+            text-align: center;
+            background: rgba(15, 15, 25, 0.6);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 32px;
+            padding: 5rem 3rem;
+            backdrop-filter: blur(20px);
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-desc {
+            font-size: 1.15rem;
+            color: #B8B8D0;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 3rem;
+            background: linear-gradient(135deg, #370080, #7C3AED);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 100px;
+            border: 1px solid rgba(124, 58, 237, 0.5);
+            box-shadow: 0 8px 32px rgba(55, 0, 128, 0.5);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: right 0.6s;
+        }
+
+        .cta-button:hover::before {
+            right: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 48px rgba(55, 0, 128, 0.7);
+        }
+
+        /* Animations */
+        [data-aos] {
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        [data-aos="fade-up"] {
+            transform: translateY(30px);
+        }
+
+        [data-aos="fade-left"] {
+            transform: translateX(-30px);
+        }
+
+        [data-aos="fade-right"] {
+            transform: translateX(30px);
+        }
+
+        [data-aos="zoom-in"] {
+            transform: scale(0.9);
+        }
+
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero-section {
+                padding: 8rem 0 4rem;
+            }
+
+            .hero-title {
+                font-size: 2.25rem;
+            }
+
+            .stats-row {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem 2rem;
+            }
+
+            .stat-line {
+                width: 100%;
+                height: 1px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline-line {
+                margin: 1rem 0 1rem 1.5rem;
+            }
+
+            .step-content:hover {
+                transform: translateY(-10px);
+            }
+
+            .profile-section,
+            .why-section,
+            .steps-section,
+            .cta-section {
+                padding: 5rem 0;
+            }
+
+            body {
+                cursor: auto;
+            }
+
+            .cursor-glow {
+                display: none;
+            }
+        }
+.dashboard-prototype-section {
+    padding: 8rem 0;
+    position: relative;
+    z-index: 2;
+}
+/* Custom Scrollbar فخم */
+.dashboard-ui::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dashboard-ui::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.dashboard-ui::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #370080, #7C3AED);
+    border-radius: 10px;
+}
+
+.dashboard-ui::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #7C3AED, #C026D3);
+}
+
+.prototype-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.browser-window {
+    background: rgba(10, 10, 20, 0.95);
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(55, 0, 128, 0.4);
+    backdrop-filter: blur(20px);
+}
+
+.browser-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(15, 15, 25, 0.95);
+    border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.browser-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.control-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.control-dot.red { background: #EF4444; }
+.control-dot.yellow { background: #F59E0B; }
+.control-dot.green { background: #10B981; }
+
+.browser-address {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1.25rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    color: #B8B8D0;
+}
+
+.dashboard-ui {
+    padding: 0;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.profile-header-demo {
+    position: relative;
+}
+.profile-cover {
+    height: 180px;
+    background: linear-gradient(135deg, #370080, #7C3AED, #C026D3);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-cover::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 50%);
+    animation: moveCover 8s linear infinite;
+}
+
+@keyframes moveCover {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.profile-info-demo {
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+    padding: 0 2.5rem 2rem;
+    margin-top: -60px;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-avatar-demo {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.profile-avatar-demo img {
+    width: 140px;
+    height: 140px;
+    border-radius: 20px;
+    border: 5px solid rgba(10, 10, 20, 0.95);
+    box-shadow: 0 10px 40px rgba(55, 0, 128, 0.5);
+}
+
+.avatar-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 900;
+}
+
+.profile-details-demo {
+    flex: 1;
+}
+
+.profile-details-demo h3 {
+    font-size: 1.75rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+}
+
+.profile-details-demo p {
+    color: #B8B8D0;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.profile-stats-demo {
+    display: flex;
+    gap: 2rem;
+}
+
+.stat-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.stat-demo strong {
+    font-size: 1.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #7C3AED, #C026D3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-demo span {
+    font-size: 0.85rem;
+    color: #B8B8D0;
+}
+
+.follow-btn-demo {
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, #370080, #7C3AED);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.follow-btn-demo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(55, 0, 128, 0.6);
+}
+
+.tabs-demo {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 2.5rem;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.tab-demo {
+    padding: 1rem 2rem;
+    background: none;
+    border: none;
+    color: #B8B8D0;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-demo.active {
+    color: #fff;
+    border-bottom-color: #7C3AED;
+}
+
+.tab-content-demo {
+    display: none;
+    padding: 2.5rem;
+    animation: fadeIn 0.5s;
+}
+
+.tab-content-demo.active {
+    display: block;
+}
+
+.projects-grid-demo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card-demo {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(124, 58, 237, 0.15);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.project-card-demo:hover {
+    transform: translateY(-8px);
+    border-color: rgba(124, 58, 237, 0.4);
+    box-shadow: 0 15px 50px rgba(55, 0, 128, 0.4);
+}
+
+.project-image-demo {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+}
+
+.purple-gradient {
+    background: linear-gradient(135deg, #370080, #7C3AED);
+}
+
+.blue-gradient {
+    background: linear-gradient(135deg, #0EA5E9, #06B6D4);
+}
+
+.green-gradient {
+    background: linear-gradient(135deg, #10B981, #34D399);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.project-card-demo:hover .project-overlay {
+    opacity: 1;
+}
+
+.view-btn {
+    padding: 0.75rem 1.5rem;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transform: scale(0.9);
+    transition: transform 0.3s;
+}
+
+.project-card-demo:hover .view-btn {
+    transform: scale(1);
+}
+
+.project-info-demo {
+    padding: 1.25rem;
+}
+
+.project-info-demo h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.project-info-demo p {
+    font-size: 0.85rem;
+    color: #B8B8D0;
+    margin-bottom: 1rem;
+}
+
+.project-stats-demo {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: #B8B8D0;
+}
+
+.about-content-demo h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.about-content-demo p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #B8B8D0;
+    margin-bottom: 2rem;
+}
+
+.skills-demo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.skill-tag {
+    padding: 0.6rem 1.25rem;
+    background: rgba(124, 58, 237, 0.15);
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.reviews-list-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.review-item-demo {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(124, 58, 237, 0.15);
+    border-radius: 16px;
+}
+
+.review-item-demo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgba(124, 58, 237, 0.5);
+}
+
+.review-content-demo {
+    flex: 1;
+}
+
+.review-header-demo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.review-header-demo strong {
+    font-size: 1.05rem;
+}
+
+.rating {
+    font-size: 0.9rem;
+}
+
+.review-content-demo p {
+    color: #B8B8D0;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .profile-info-demo {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 1.5rem 1.5rem;
+    }
+    
+    .tabs-demo {
+        padding: 0 1.5rem;
+        overflow-x: auto;
+    }
+    
+    .tab-content-demo {
+        padding: 1.5rem;
+    }
+    
+    .projects-grid-demo {
+        grid-template-columns: 1fr;
+    }
+}
+.about-section {
+    padding: 8rem 0;
+    position: relative;
+    z-index: 2;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1.5rem;
+    background: rgba(55, 0, 128, 0.1);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 100px;
+    font-size: 0.9rem;
+    color: #C4B5FD;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.label-dot {
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #7C3AED, #C026D3);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.about-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #7C3AED, #C026D3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-paragraph {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #B8B8D0;
+    margin-bottom: 1.5rem;
+}
+
+.about-features {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.feature-item {
+    text-align: center;
+}
+
+.feature-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #7C3AED, #C026D3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.feature-label {
+    font-size: 0.95rem;
+    color: #B8B8D0;
+    font-weight: 600;
+}
+
+/* Server Identity */
+.server-identity {
+    position: relative;
+}
+
+.server-banner {
+    position: relative;
+    background: rgba(15, 15, 25, 0.6);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 24px;
+    padding: 3rem;
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+.banner-overlay {
+    position: relative;
+    text-align: center;
+}
+
+.laptop-illustration {
+    margin-bottom: 2rem;
+}
+
+.laptop-svg {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(124, 58, 237, 0.3));
+}
+
+.feather {
+    transform-origin: 200px 140px;
+}
+
+.server-info h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #E5E5E5;
+}
+
+.server-link {
+    font-size: 1.1rem;
+    color: #B8B8D0;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+}
+
+.floating-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.float-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(124, 58, 237, 0.15);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s;
+    animation: floatCard 6s ease-in-out infinite;
+}
+
+.float-card.card-1 { animation-delay: 0s; }
+.float-card.card-2 { animation-delay: 2s; }
+.float-card.card-3 { animation-delay: 4s; }
+
+@keyframes floatCard {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-15px); }
+}
+
+.float-card:hover {
+    transform: translateX(-20px) !important;
+    border-color: rgba(124, 58, 237, 0.4);
+    box-shadow: 0 15px 50px rgba(55, 0, 128, 0.3);
+}
+
+.card-icon-circle {
+    width: 55px;
+    height: 55px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.card-icon-circle.purple {
+    background: linear-gradient(135deg, #370080, #7C3AED);
+}
+
+.card-icon-circle.blue {
+    background: linear-gradient(135deg, #0EA5E9, #06B6D4);
+}
+
+.card-icon-circle.green {
+    background: linear-gradient(135deg, #10B981, #34D399);
+}
+
+.card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.card-text strong {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.card-text span {
+    font-size: 0.9rem;
+    color: #B8B8D0;
+}
+
+@media (max-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .about-features {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+    </style>
+
+    <%- include("footer")%>
+
+
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor-glow');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Simple AOS Animation
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('aos-animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-aos]').forEach(el => {
+            observer.observe(el);
+        });
+
+
+function switchDemoTab(tab) {
+    document.querySelectorAll('.tab-demo').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content-demo').forEach(c => c.classList.remove('active'));
+    
+    event.currentTarget.classList.add('active');
+    document.getElementById(tab + '-demo').classList.add('active');
+}
+</script>
+</body>
+</html>

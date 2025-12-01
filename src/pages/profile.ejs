@@ -1,0 +1,1032 @@
+<!-- <!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <%- include("loader") %>
+
+    <div class="flex items-center justify-center h-screen bg-discord-gray text-white flex-col">
+        <div class="text-2xl">Welcome to the dashboard,</div>
+        <div class="text-4xl mt-3 flex items-center font-medium">
+            <img src="<%= user.avatarURL %>" id="avatar" class="rounded-full w-12 h-12 mr-3" />
+            <div id="name"><%= user.username %>#<%= user.discriminator %></div>
+        </div>
+        <div class="mt-3 text-gray-400">ID: <%= user.id %></div>
+        <% if (user.email) { %>
+            <div class="mt-2 text-gray-400">Email: <%= user.email %></div>
+        <% } %>
+        <a href="/logout" class="text-sm mt-5 bg-red-600 hover:bg-red-700 px-4 py-2 rounded">Logout</a>
+    </div>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0a0a14;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .profile-page {
+            min-height: 100vh;
+            padding-top: 6rem;
+        }
+
+        .profile-cover {
+            position: relative;
+            height: 320px;
+            background: linear-gradient(135deg, #370080, #7C3AED, #C026D3);
+            overflow: hidden;
+        }
+
+        .cover-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .cover-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+            animation: moveGlow 10s ease-in-out infinite;
+        }
+
+        @keyframes moveGlow {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(100px, 50px); }
+        }
+
+        <% if (isOwner && profileUser.customCover) { %>
+        .profile-cover {
+            background: <%= profileUser.customCover %>;
+        }
+        <% } %>
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .profile-header {
+            position: relative;
+            margin-top: -100px;
+            z-index: 10;
+        }
+
+        .profile-main {
+            display: flex;
+            align-items: flex-end;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-avatar-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .avatar-ring {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #7C3AED, #C026D3, #EC4899);
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-avatar {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            border-radius: 24px;
+            border: 6px solid #0a0a14;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.5);
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        <% if (profileUser.isPro) { %>
+        .pro-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 900;
+            color: #000;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+        }
+        <% } %>
+
+        .profile-info {
+            flex: 1;
+            padding-bottom: 1rem;
+        }
+
+        .profile-name {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .username-tag {
+            font-size: 1.25rem;
+            color: #B8B8D0;
+            font-weight: 600;
+        }
+
+        .profile-bio {
+            font-size: 1.1rem;
+            color: #B8B8D0;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #7C3AED, #C026D3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #B8B8D0;
+            font-weight: 600;
+        }
+
+        .profile-badges {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .badge-item {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .badge-item:hover {
+            transform: translateY(-5px) scale(1.1);
+            border-color: rgba(124, 58, 237, 0.6);
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+        }
+
+        .badge-tooltip {
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%) scale(0.9);
+            background: rgba(15, 15, 25, 0.98);
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            white-space: nowrap;
+            font-size: 0.85rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+            z-index: 100;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .badge-item:hover .badge-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .badge-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: rgba(15, 15, 25, 0.98);
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .action-btn {
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #370080, #7C3AED);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(55, 0, 128, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(55, 0, 128, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .profile-content {
+            margin-top: 3rem;
+        }
+
+        .content-tabs {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid rgba(124, 58, 237, 0.2);
+            margin-bottom: 3rem;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            color: #B8B8D0;
+            font-size: 1.05rem;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tab-btn.active {
+            color: #fff;
+            border-bottom-color: #7C3AED;
+        }
+
+        .tab-btn:hover {
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(15, 15, 25, 0.6);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(124, 58, 237, 0.5);
+            box-shadow: 0 15px 50px rgba(55, 0, 128, 0.4);
+        }
+
+        .project-thumbnail {
+            height: 200px;
+            background: linear-gradient(135deg, #370080, #7C3AED);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .view-project-btn {
+            padding: 0.75rem 1.5rem;
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: #B8B8D0;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.4rem 0.875rem;
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: #B8B8D0;
+        }
+
+        .about-section {
+            max-width: 800px;
+        }
+
+        .about-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #B8B8D0;
+            margin-bottom: 2rem;
+        }
+
+        .skills-section {
+            margin-top: 3rem;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            padding: 0.75rem 1.5rem;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            background: rgba(124, 58, 237, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #B8B8D0;
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 968px) {
+            .profile-main {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile-stats {
+                justify-content: center;
+            }
+
+            .profile-actions {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <%- include("header", { user: user }) %>
+
+    <div class="profile-page">
+        <div class="profile-cover">
+            <div class="cover-pattern"></div>
+            <div class="cover-glow"></div>
+        </div>
+
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-main">
+                    <div class="profile-avatar-wrapper">
+                        <div class="avatar-ring"></div>
+                        <div class="profile-avatar">
+                            <img src="<%= profileUser.avatarURL %>" alt="<%= profileUser.displayName %>">
+                            <% if (profileUser.isPro) { %>
+                                <div class="pro-badge">PRO</div>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1 class="profile-name">
+                            <%= profileUser.displayName %>
+                            <span class="username-tag">@<%= profileUser.username %></span>
+                        </h1>
+
+                        <% if (profileUser.bio) { %>
+                            <p class="profile-bio"><%= profileUser.bio %></p>
+                        <% } %>
+
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <div class="stat-value"><%= profileUser.stats?.projects || 0 %></div>
+                                <div class="stat-label">مشروع</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value"><%= profileUser.stats?.followers || 0 %></div>
+                                <div class="stat-label">متابع</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value"><%= profileUser.stats?.following || 0 %></div>
+                                <div class="stat-label">يتابع</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value"><%= profileUser.stats?.likes || 0 %></div>
+                                <div class="stat-label">إعجاب</div>
+                            </div>
+                        </div>
+
+                        <% if (profileUser.badges && profileUser.badges.length > 0) { %>
+                            <div class="profile-badges">
+                                <% profileUser.badges.forEach(badge => { %>
+                                    <div class="badge-item">
+                                        <%= badge.icon %>
+                                        <div class="badge-tooltip"><%= badge.description %></div>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <div class="profile-actions">
+                        <% if (isOwner) { %>
+                            <a href="/settings/profile" class="action-btn btn-primary">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M18.5 2.5C18.8978 2.10217 19.4374 1.87868 20 1.87868C20.5626 1.87868 21.1022 2.10217 21.5 2.5C21.8978 2.89782 22.1213 3.43739 22.1213 4C22.1213 4.56261 21.8978 5.10217 21.5 5.5L12 15L8 16L9 12L18.5 2.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>تعديل الملف الشخصي</span>
+                            </a>
+                        <% } else { %>
+                            <button class="action-btn btn-primary" onclick="followUser('<%= profileUser.username %>')">
+                                <span>متابعة +</span>
+                            </button>
+                        <% } %>
+                        <button class="action-btn btn-secondary">
+                            <span>مشاركة</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="content-tabs">
+                    <button class="tab-btn active" onclick="switchTab('projects')">المشاريع</button>
+                    <button class="tab-btn" onclick="switchTab('about')">نبذة عني</button>
+                    <% if (isOwner) { %>
+                        <button class="tab-btn" onclick="switchTab('analytics')">الإحصائيات</button>
+                    <% } %>
+                </div>
+
+                <div class="tab-content active" id="projects-tab">
+                    <% if (projects && projects.length > 0) { %>
+                        <div class="projects-grid">
+                            <% projects.forEach(project => { %>
+                                <div class="project-card">
+                                    <div class="project-thumbnail" style="background: linear-gradient(135deg, #370080, #7C3AED)">
+                                        <div class="project-overlay">
+                                            <button class="view-project-btn">عرض المشروع</button>
+                                        </div>
+                                    </div>
+                                    <div class="project-info">
+                                        <h3 class="project-title"><%= project.title %></h3>
+                                        <p class="project-desc"><%= project.description %></p>
+                                        <% if (project.technologies) { %>
+                                            <div class="project-tags">
+                                                <% project.technologies.slice(0, 3).forEach(tech => { %>
+                                                    <span class="tag"><%= tech %></span>
+                                                <% }); %>
+                                            </div>
+                                        <% } %>
+                                        <div class="project-stats">
+                                            <span>❤️ <%= project.stats?.likes || 0 %></span>
+                                            <span>💬 <%= project.stats?.comments || 0 %></span>
+                                            <span>👁️ <%= project.stats?.views || 0 %></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        </div>
+                    <% } else { %>
+                        <div class="empty-state">
+                            <div class="empty-icon">📦</div>
+                            <h3>لا توجد مشاريع بعد</h3>
+                            <% if (isOwner) { %>
+                                <p>ابدأ بإضافة أول مشروع لك!</p>
+                            <% } %>
+                        </div>
+                    <% } %>
+                </div>
+
+                <div class="tab-content" id="about-tab">
+                    <div class="about-section">
+                        <h2 class="about-title">نبذة عني</h2>
+                        <p class="about-text">
+                            <%= profileUser.bio || 'لم يتم إضافة نبذة بعد.' %>
+                        </p>
+
+                        <% if (profileUser.skills && profileUser.skills.length > 0) { %>
+                            <div class="skills-section">
+                                <h3 class="about-title">المهارات</h3>
+                                <div class="skills-grid">
+                                    <% profileUser.skills.forEach(skill => { %>
+                                        <div class="skill-item"><%= skill %></div>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+
+                <% if (isOwner) { %>
+                    <div class="tab-content" id="analytics-tab">
+                        <div class="about-section">
+                            <h2 class="about-title">إحصائيات الملف الشخصي</h2>
+                            <p class="about-text">قريباً...</p>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabName + '-tab').classList.add('active');
+        }
+
+        function followUser(username) {
+            fetch('/api/follow/' + username, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    event.currentTarget.innerHTML = '<span>تم المتابعة ✓</span>';
+                }
+            })
+            .catch(err => console.error(err));
+        }
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/profile.css">
+</head>
+<body>
+    <%- include("header", { user: user }) %>
+
+    <% 
+    const coverGradient = (isOwner && profileUser.customTheme?.coverGradient) 
+        ? profileUser.customTheme.coverGradient 
+        : 'linear-gradient(135deg, #370080, #7C3AED, #C026D3)';
+    
+    const accentColor = (isOwner && profileUser.customTheme?.accentColor) 
+        ? profileUser.customTheme.accentColor 
+        : '#7C3AED';
+    
+    const secondaryColor = (isOwner && profileUser.customTheme?.secondaryColor) 
+        ? profileUser.customTheme.secondaryColor 
+        : '#C026D3';
+    %>
+
+    <style>
+        :root {
+            --accent-color: <%= accentColor %>;
+            --secondary-color: <%= secondaryColor %>;
+            --cover-gradient: <%= coverGradient %>;
+        }
+    </style>
+
+    <main class="profile-page">
+        <div class="profile-cover" style="background: var(--cover-gradient);">
+            <div class="cover-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <div class="cover-gradient-overlay"></div>
+            
+            <% if (isOwner) { %>
+                <button class="edit-cover-btn" onclick="openCustomize()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span>تخصيص الغلاف</span>
+                </button>
+            <% } %>
+        </div>
+
+        <div class="container">
+            <div class="profile-container">
+                <div class="profile-sidebar">
+                    <div class="avatar-section">
+                        <div class="avatar-glow"></div>
+                        <div class="avatar-ring"></div>
+                        <img src="<%= profileUser.avatarURL %>" alt="<%= profileUser.displayName %>" class="avatar">
+                        
+                        <% if (profileUser.isPro) { %>
+                            <div class="pro-badge">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                                </svg>
+                                <span>PRO</span>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <h1 class="profile-name"><%= profileUser.displayName %></h1>
+                    <p class="profile-username">@<%= profileUser.username %></p>
+
+                    <% if (profileUser.bio) { %>
+                        <p class="profile-bio"><%= profileUser.bio %></p>
+                    <% } %>
+
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <div class="stat-value"><%= profileUser.stats?.projects || 0 %></div>
+                            <div class="stat-label">مشاريع</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <div class="stat-value"><%= profileUser.stats?.followers || 0 %></div>
+                            <div class="stat-label">متابعين</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <div class="stat-value"><%= profileUser.stats?.likes || 0 %></div>
+                            <div class="stat-label">إعجابات</div>
+                        </div>
+                    </div>
+
+                    <% if (profileUser.badges && profileUser.badges.length > 0) { %>
+                        <div class="badges-showcase">
+                            <h3 class="sidebar-title">الشارات</h3>
+                            <div class="badges-grid">
+                                <% profileUser.badges.forEach(badge => { %>
+                                    <div class="badge-item" title="<%= badge.description %>">
+                                        <div class="badge-icon"><%= badge.icon %></div>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        </div>
+                    <% } %>
+
+                    <div class="action-buttons">
+                        <% if (isOwner) { %>
+                            <a href="/settings/profile" class="action-btn primary">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M18.5 2.5C18.8978 2.10217 19.4374 1.87868 20 1.87868C20.5626 1.87868 21.1022 2.10217 21.5 2.5C21.8978 2.89782 22.1213 3.43739 22.1213 4C22.1213 4.56261 21.8978 5.10217 21.5 5.5L12 15L8 16L9 12L18.5 2.5Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                <span>تعديل</span>
+                            </a>
+                            <a href="/settings/customize" class="action-btn secondary">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M7 21H4C3.46957 21 2.96086 20.7893 2.58579 20.4142C2.21071 20.0391 2 19.5304 2 19V8C2 6.89543 2.89543 6 4 6H7M16 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V16C21 17.1046 20.1046 18 19 18H16" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 2V22" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                <span>تخصيص</span>
+                            </a>
+                        <% } else { %>
+                            <button class="action-btn primary" onclick="followUser()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M20 8V14M23 11H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                <span>متابعة</span>
+                            </button>
+                        <% } %>
+                        <button class="action-btn icon-btn" onclick="shareProfile()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 8C19.6569 8 21 6.65685 21 5C21 3.34315 19.6569 2 18 2C16.3431 2 15 3.34315 15 5C15 6.65685 16.3431 8 18 8Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M6 15C7.65685 15 9 13.6569 9 12C9 10.3431 7.65685 9 6 9C4.34315 9 3 10.3431 3 12C3 13.6569 4.34315 15 6 15Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M18 22C19.6569 22 21 20.6569 21 19C21 17.3431 19.6569 16 18 16C16.3431 16 15 17.3431 15 19C15 20.6569 16.3431 22 18 22Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M8.59 13.51L15.42 17.49M15.41 6.51L8.59 10.49" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <% if (profileUser.skills && profileUser.skills.length > 0) { %>
+                        <div class="skills-section">
+                            <h3 class="sidebar-title">المهارات</h3>
+                            <div class="skills-list">
+                                <% profileUser.skills.forEach(skill => { %>
+                                    <span class="skill-tag"><%= skill %></span>
+                                <% }); %>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+
+                <div class="profile-content">
+                    <div class="content-tabs">
+                        <button class="tab-btn active" data-tab="projects">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M9 9H15M9 13H15M9 17H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span>المشاريع</span>
+                        </button>
+                        <button class="tab-btn" data-tab="activity">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M22 12H18L15 21L9 3L6 12H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>النشاط</span>
+                        </button>
+                        <% if (isOwner) { %>
+                            <button class="tab-btn" data-tab="analytics">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 3V21M21 21H3M7 16L12 11L16 15L21 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>الإحصائيات</span>
+                            </button>
+                        <% } %>
+                    </div>
+
+                    <div class="tab-content active" id="projects-content">
+                        <% if (isOwner) { %>
+                            <div class="content-header">
+                                <h2>مشاريعي</h2>
+                                <a href="/projects/new" class="new-project-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                    <span>مشروع جديد</span>
+                                </a>
+                            </div>
+                        <% } %>
+
+                        <% if (projects && projects.length > 0) { %>
+                            <div class="projects-grid">
+                                <% projects.forEach(project => { %>
+                                    <div class="project-card">
+                                        <div class="project-image" style="background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));">
+                                            <div class="project-overlay">
+                                                <a href="/projects/<%= project._id %>" class="view-btn">عرض المشروع</a>
+                                            </div>
+                                        </div>
+                                        <div class="project-body">
+                                            <h3 class="project-title"><%= project.title %></h3>
+                                            <p class="project-desc"><%= project.description %></p>
+                                            <% if (project.technologies) { %>
+                                                <div class="project-tech">
+                                                    <% project.technologies.slice(0, 3).forEach(tech => { %>
+                                                        <span class="tech-tag"><%= tech %></span>
+                                                    <% }); %>
+                                                </div>
+                                            <% } %>
+                                            <div class="project-footer">
+                                                <div class="project-stats">
+                                                    <span>❤️ <%= project.stats?.likes || 0 %></span>
+                                                    <span>💬 <%= project.stats?.comments || 0 %></span>
+                                                    <span>👁️ <%= project.stats?.views || 0 %></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        <% } else { %>
+                            <div class="empty-state">
+                                <div class="empty-icon">📦</div>
+                                <h3>لا توجد مشاريع بعد</h3>
+                                <% if (isOwner) { %>
+                                    <p>ابدأ بإنشاء أول مشروع لك</p>
+                                    <a href="/projects/new" class="empty-btn">إنشاء مشروع</a>
+                                <% } %>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <div class="tab-content" id="activity-content">
+                        <div class="activity-feed">
+                            <h3>النشاط الأخير</h3>
+                            <p style="color: #B8B8D0; margin-top: 1rem;">قريباً...</p>
+                        </div>
+                    </div>
+
+                    <% if (isOwner) { %>
+                        <div class="tab-content" id="analytics-content">
+                            <div class="analytics-section">
+                                <h3>إحصائيات الملف الشخصي</h3>
+                                <p style="color: #B8B8D0; margin-top: 1rem;">قريباً...</p>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabName = this.dataset.tab;
+                
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                this.classList.add('active');
+                document.getElementById(tabName + '-content').classList.add('active');
+            });
+        });
+
+        function followUser() {
+            console.log('Following user...');
+        }
+
+        function shareProfile() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('تم نسخ الرابط!');
+            }
+        }
+
+        function openCustomize() {
+            window.location.href = '/settings/customize';
+        }
+    </script>
+</body>
+</html>
