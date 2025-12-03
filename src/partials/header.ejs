@@ -28,7 +28,7 @@
             <a href="#pricing" class="nav-link">
                 <span>الأسعار</span>
             </a>
-            <a href="#about" class="nav-link">
+            <a href="#about-section" class="nav-link">
                 <span>من نحن</span>
             </a>
             <a href="#contact" class="nav-link">
@@ -55,7 +55,7 @@
                             <img src="<%= user.avatarURL %>" alt="<%= user.username %>">
                             <div class="dropdown-user-info">
                                 <div class="dropdown-username"><%= user.username %></div>
-                                <div class="dropdown-id">ID: <%= user.id %></div>
+                                <div class="dropdown-id">ID: <%= user.discordId %></div>
                             </div>
                         </div>
                         <div class="dropdown-divider"></div>
@@ -145,7 +145,7 @@
                     <img src="<%= user.avatarURL %>" alt="<%= user.username %>" class="mobile-user-avatar">
                     <div class="mobile-user-details">
                         <div class="mobile-user-name"><%= user.username %></div>
-                        <div class="mobile-user-id">ID: <%= user.id %></div>
+                        <div class="mobile-user-id">ID: <%= user.discordId %></div>
                     </div>
                 </div>
             </div>
@@ -321,6 +321,7 @@
     padding: 0.5rem;
     border-radius: 100px;
     border: 1px solid rgba(124, 58, 237, 0.15);
+    margin-right: 100px;
 }
 
 .nav-link {
