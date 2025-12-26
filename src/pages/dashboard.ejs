@@ -27,5 +27,17 @@
         }
     </style>
 
+    <main>
+        <%- include("dashboardContent", { user: user, profileUser: profileUser, isOwner: isOwner }) %>
+    </main>
+
+
+    <section id="classic-modal" class="modal">
+        <span><%= profileUser.username %> اهلا،</span>
+    </section>
+
+    </section>
+
+    <%- include("footer") %>
 </body>
 </html>

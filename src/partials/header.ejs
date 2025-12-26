@@ -4,18 +4,7 @@
         <!-- Logo Section -->
         <div class="logo-section">
             <a href="/" class="logo-container">
-                <div class="logo-circle">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <path d="M16 6L22 16L16 26L10 16L16 6Z" fill="url(#logo-grad)"/>
-                        <circle cx="16" cy="16" r="3" fill="white"/>
-                        <defs>
-                            <linearGradient id="logo-grad" x1="10" y1="6" x2="22" y2="26">
-                                <stop offset="0%" stop-color="#7C3AED"/>
-                                <stop offset="100%" stop-color="#370080"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
+                <img src="/assets/images/crevion.png" alt="">
                 <span class="logo-text">كريفيون</span>
             </a>
         </div>
@@ -265,51 +254,29 @@
     display: flex;
     align-items: center;
 }
-
-.logo-container {
-    display: flex;
+.logo-container{
     align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-    color: #fff;
-    transition: transform 0.3s;
+    justify-content: center;
+    display: flex;
+    transition: 0.5s ease-in-out;
+}
+
+.logo-container img{
+    width: 80px;
+    height: 80px;
 }
 
 .logo-container:hover {
     transform: scale(1.05);
 }
 
-.logo-circle {
-    width: 48px;
-    height: 48px;
-    background: rgba(55, 0, 128, 0.3);
-    border: 2px solid rgba(124, 58, 237, 0.4);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.logo-circle::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), transparent);
-    animation: rotateLogo 4s linear infinite;
-}
-
-@keyframes rotateLogo {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
 .logo-text {
-    font-size: 1.35rem;
+    font-size: 1.50rem;
     font-weight: 900;
     letter-spacing: -0.02em;
+    color: #fff;
+    text-decoration: none;
+
 }
 
 /* Navigation Links */
